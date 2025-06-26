@@ -1,135 +1,172 @@
 import React from "react";
 import { Link, Divider } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-content3 py-12">
+    <footer className="bg-black text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          {/* Company Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <div className="flex items-center gap-2 mb-4">
               <Icon icon="lucide:utensils" className="text-primary" width={24} height={24} />
-              <h3 className="font-bold text-lg">Jade Hibachi Grill</h3>
+              <h3 className="font-bold text-lg text-white">Jade Hibachi</h3>
             </div>
-            <p className="text-foreground-600 mb-4">
+            <p className="text-gray-400 mb-6 leading-relaxed">
               Casual eatery dishing up hibachi-style fare such as chicken and shrimp combos, teriyaki, and steak.
             </p>
             <div className="flex gap-4">
-              <Link href="#" aria-label="Facebook">
-                <Icon icon="lucide:facebook" className="text-foreground-500 hover:text-primary transition-colors" width={20} height={20} />
-              </Link>
-              <Link href="#" aria-label="Instagram">
-                <Icon icon="lucide:instagram" className="text-foreground-500 hover:text-primary transition-colors" width={20} height={20} />
-              </Link>
-              <Link href="#" aria-label="Twitter">
-                <Icon icon="lucide:twitter" className="text-foreground-500 hover:text-primary transition-colors" width={20} height={20} />
-              </Link>
-              <Link href="#" aria-label="Yelp">
-                <Icon icon="lucide:star" className="text-foreground-500 hover:text-primary transition-colors" width={20} height={20} />
-              </Link>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link href="#" aria-label="Facebook" className="text-gray-400 hover:text-primary transition-colors">
+                  <Icon icon="lucide:facebook" width={20} height={20} />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link href="#" aria-label="Instagram" className="text-gray-400 hover:text-primary transition-colors">
+                  <Icon icon="lucide:instagram" width={20} height={20} />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Link href="#" aria-label="Twitter" className="text-gray-400 hover:text-primary transition-colors">
+                  <Icon icon="lucide:twitter" width={20} height={20} />
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
           
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-semibold text-lg mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
               <li>
-                <Link href="#" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#about" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
+                <Link href="#about" className="text-gray-400 hover:text-primary transition-colors text-sm">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#menu" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
+                <Link href="#menu" className="text-gray-400 hover:text-primary transition-colors text-sm">
                   Menu
                 </Link>
               </li>
               <li>
-                <Link href="#order" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
+                <Link href="#order" className="text-gray-400 hover:text-primary transition-colors text-sm">
                   Order Online
                 </Link>
               </li>
               <li>
-                <Link href="#reviews" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
-                  Reviews
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" color="foreground" className="text-foreground-600 hover:text-primary transition-colors">
+                <Link href="#contact" className="text-gray-400 hover:text-primary transition-colors text-sm">
                   Contact
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
-            <ul className="space-y-3">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-semibold text-lg mb-6 text-white">Contact Info</h3>
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Icon icon="lucide:map-pin" className="text-primary mt-1" width={18} height={18} />
-                <span className="text-foreground-600">271 Ashley Ave, Charleston, SC 29403</span>
+                <Icon icon="lucide:map-pin" className="text-primary mt-1 flex-shrink-0" width={16} height={16} />
+                <div className="text-gray-400 text-sm">
+                  <div>271 Ashley Ave</div>
+                  <div>Charleston, SC 29403</div>
+                </div>
               </li>
-              <li className="flex items-start gap-3">
-                <Icon icon="lucide:phone" className="text-primary mt-1" width={18} height={18} />
-                <span className="text-foreground-600">(854) 999-3943</span>
+              <li className="flex items-center gap-3">
+                <Icon icon="lucide:phone" className="text-primary flex-shrink-0" width={16} height={16} />
+                <span className="text-gray-400 text-sm">(854) 999-3943</span>
               </li>
-              <li className="flex items-start gap-3">
-                <Icon icon="lucide:mail" className="text-primary mt-1" width={18} height={18} />
-                <span className="text-foreground-600">contact@jadehibachi.com</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Icon icon="lucide:clock" className="text-primary mt-1" width={18} height={18} />
-                <span className="text-foreground-600">Tue-Sun: 5:00 PM - 10:00 PM<br />Monday: Closed</span>
+              <li className="flex items-center gap-3">
+                <Icon icon="lucide:mail" className="text-primary flex-shrink-0" width={16} height={16} />
+                <span className="text-gray-400 text-sm">info@jadehibachi.com</span>
               </li>
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Newsletter</h3>
-            <p className="text-foreground-600 mb-4">
-              Subscribe to our newsletter for special deals and updates.
-            </p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="px-4 py-2 rounded-l-medium border border-divider focus:outline-none focus:border-primary"
-              />
-              <button className="bg-primary text-white px-4 py-2 rounded-r-medium hover:bg-primary-600 transition-colors">
-                <Icon icon="lucide:send" width={18} height={18} />
-              </button>
+          {/* Hours */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-semibold text-lg mb-6 text-white">Hours</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Tuesday</span>
+                <span className="text-white">5-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Wednesday</span>
+                <span className="text-white">6-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Thursday</span>
+                <span className="text-white">5-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Friday</span>
+                <span className="text-white">5-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Saturday</span>
+                <span className="text-white">5-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Sunday</span>
+                <span className="text-white">5-10 PM</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Monday</span>
+                <span className="text-red-400">Closed</span>
+              </div>
             </div>
-            <p className="text-xs text-foreground-500 mt-2">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
-        <Divider className="my-6" />
+        <Divider className="my-8 bg-gray-800" />
         
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-foreground-600 text-sm">
-            &copy; {currentYear} Jade Hibachi Grill. All rights reserved.
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-500 text-sm">
+            &copy; {currentYear} Jade Hibachi. All rights reserved.
           </p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="#" color="foreground" className="text-foreground-600 text-sm hover:text-primary transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" color="foreground" className="text-foreground-600 text-sm hover:text-primary transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" color="foreground" className="text-foreground-600 text-sm hover:text-primary transition-colors">
-              Accessibility
-            </Link>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
