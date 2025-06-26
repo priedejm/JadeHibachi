@@ -236,35 +236,48 @@ export const Menu: React.FC = () => {
   return (
     <section id="menu" className="py-20 bg-content2">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl font-bold mb-4">Our Menu</h2>
           <p className="text-foreground-600 max-w-2xl mx-auto">
             Explore our delicious hibachi-style dishes prepared with fresh ingredients and authentic flavors
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
-        </div>
+        </motion.div>
         
-        <Tabs 
-          aria-label="Menu Categories" 
-          selectedKey={selected} 
-          onSelectionChange={(key) => {
-            setSelected(key as string);
-            setShowAllItems(false); // Reset view more state when changing tabs
-          }}
-          color="primary"
-          variant="underlined"
-          classNames={{
-            tabList: "mx-auto max-w-fit mb-8",
-            cursor: "bg-primary",
-            tab: "px-3"
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
         >
-          <Tab key="popular" title="Popular" />
-          <Tab key="hibachi" title="Hibachi" />
-          <Tab key="teriyaki" title="Teriyaki" />
-          <Tab key="appetizers" title="Appetizers" />
-          <Tab key="desserts" title="Desserts" />
-        </Tabs>
+          <Tabs 
+            aria-label="Menu Categories" 
+            selectedKey={selected} 
+            onSelectionChange={(key) => {
+              setSelected(key as string);
+              setShowAllItems(false); // Reset view more state when changing tabs
+            }}
+            color="primary"
+            variant="underlined"
+            classNames={{
+              tabList: "mx-auto max-w-fit mb-8",
+              cursor: "bg-primary",
+              tab: "px-3"
+            }}
+          >
+            <Tab key="popular" title="Popular" />
+            <Tab key="hibachi" title="Hibachi" />
+            <Tab key="teriyaki" title="Teriyaki" />
+            <Tab key="appetizers" title="Appetizers" />
+            <Tab key="desserts" title="Desserts" />
+          </Tabs>
+        </motion.div>
         
         {showCartNotification && (
           <motion.div
@@ -291,15 +304,29 @@ export const Menu: React.FC = () => {
             const quantity = cartItem?.quantity || 0;
             
             return (
-              <motion.div key={menuItem.id} variants={item} className="menu-item-hover">
-                <Card className="border border-divider">
+              <motion.div 
+                key={menuItem.id} 
+                variants={item} 
+                className="menu-item-hover"
+                whileHover={{ 
+                  y: -5,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <Card className="border border-divider h-full">
                   <CardBody className="p-0">
-                    <Image
-                      removeWrapper
-                      alt={menuItem.name}
-                      className="w-full h-48 object-cover"
-                      src={menuItem.image}
-                    />
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <Image
+                        removeWrapper
+                        alt={menuItem.name}
+                        className="w-full h-48 object-cover"
+                        src={menuItem.image}
+                      />
+                    </motion.div>
                     <div className="p-4">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-lg font-semibold">{menuItem.name}</h3>
@@ -308,23 +335,33 @@ export const Menu: React.FC = () => {
                       <p className="text-foreground-600 text-sm">{menuItem.description}</p>
                       
                       {quantity > 0 && (
-                        <div className="mt-2 flex items-center gap-2 text-sm text-primary">
+                        <motion.div 
+                          className="mt-2 flex items-center gap-2 text-sm text-primary"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
                           <Icon icon="lucide:shopping-cart" size={14} />
                           <span>{quantity} in cart</span>
-                        </div>
+                        </motion.div>
                       )}
                     </div>
                   </CardBody>
                   <CardFooter className="flex justify-end">
-                    <Button 
-                      color="primary" 
-                      variant="solid" 
-                      startContent={quantity > 0 ? <Icon icon="lucide:check" /> : <Icon icon="lucide:plus" />}
-                      size="sm"
-                      onPress={() => handleAddToCart(menuItem)}
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      {quantity > 0 ? "Added" : "Add to Order"}
-                    </Button>
+                      <Button 
+                        color="primary" 
+                        variant="solid" 
+                        startContent={quantity > 0 ? <Icon icon="lucide:check" /> : <Icon icon="lucide:plus" />}
+                        size="sm"
+                        onPress={() => handleAddToCart(menuItem)}
+                      >
+                        {quantity > 0 ? "Added" : "Add to Order"}
+                      </Button>
+                    </motion.div>
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -333,18 +370,29 @@ export const Menu: React.FC = () => {
         </motion.div>
         
         {shouldShowViewMore && (
-          <div className="text-center mt-8">
-            <Button 
-              color="primary" 
-              variant="flat"
-              size="lg"
-              onPress={() => setShowAllItems(!showAllItems)}
-              startContent={<Icon icon={showAllItems ? "lucide:chevron-up" : "lucide:chevron-down"} />}
-              className="font-medium"
+          <motion.div 
+            className="text-center mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {showAllItems ? "Show Less" : "View More"}
-            </Button>
-          </div>
+              <Button 
+                color="primary" 
+                variant="flat"
+                size="lg"
+                onPress={() => setShowAllItems(!showAllItems)}
+                startContent={<Icon icon={showAllItems ? "lucide:chevron-up" : "lucide:chevron-down"} />}
+                className="font-medium"
+              >
+                {showAllItems ? "Show Less" : "View More"}
+              </Button>
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </section>
