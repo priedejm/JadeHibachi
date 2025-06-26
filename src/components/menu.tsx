@@ -242,9 +242,9 @@ export const Menu: React.FC = () => {
           color="primary"
           variant="underlined"
           classNames={{
-            tabList: "mx-auto max-w-fit mb-6 md:mb-8 flex-nowrap overflow-x-auto justify-center",
+            tabList: "w-full mb-6 md:mb-8 flex-wrap md:flex-nowrap md:justify-center overflow-x-auto scrollbar-hide gap-2 md:gap-4",
             cursor: "bg-primary",
-            tab: "px-3 md:px-8 whitespace-nowrap text-sm md:text-base"
+            tab: "px-3 md:px-6 py-3 text-sm md:text-base whitespace-nowrap flex-shrink-0 data-[selected=true]:text-primary"
           }}
         >
           <Tab key="featured" title="Featured Items" />
