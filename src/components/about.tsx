@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardBody, Image } from "@heroui/react";
 import { motion } from "framer-motion";
-import { UtensilsCrossed, Leaf, Monitor, ChefHat, Sun } from "lucide-react";
+import { TreePalm, Leaf, Monitor, ChefHat } from "lucide-react";
 
 export const About: React.FC = () => {
   return (
@@ -19,12 +19,16 @@ export const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Image
-              removeWrapper
-              alt="Jade Hibachi Grill Restaurant"
-              className="w-full h-auto md:w-[85%] lg:w-[80%] md:mx-auto rounded-medium"
-              src="/assets/images/hibachi2.jpg"
-            />
+            <Card className="overflow-hidden border-none">
+              <CardBody className="p-0">
+                <Image
+                  removeWrapper
+                  alt="Jade Hibachi Grill Restaurant"
+                  className="w-full h-auto object-cover"
+                  src="assets/images/hibachi2.jpg"
+                />
+              </CardBody>
+            </Card>
           </motion.div>
           
           <motion.div
@@ -36,32 +40,32 @@ export const About: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold">Welcome to Jade Hibachi Grill</h3>
             <p className="text-foreground-600">
-              Jade Hibachi Grill is a casual eatery in Charleston specializing in authentic hibachi-style cuisine. 
-              Our skilled chefs prepare delicious chicken and shrimp combos, teriyaki, and steak dishes right before your eyes.
+              A family-owned and operated spot in Charleston's Westside neighborhood, Jade Hibachi serves 
+              familiar Japanese-style hibachi and Filipino recipes passed down from our own families.
             </p>
             <p className="text-foreground-600">
-              We pride ourselves on creating a friendly atmosphere where you can enjoy great food while watching sports. 
-              Our menu includes vegan options to accommodate all dietary preferences.
+              We extend a warm Filipino-Charlestonian welcome and hope to see you soon! Our menu includes 
+              delicious chicken and shrimp combos, teriyaki, steak dishes, and vegan options to accommodate all dietary preferences.
             </p>
             
             <div className="grid grid-cols-2 gap-4 mt-6">
               <div className="border border-divider rounded-medium p-4 text-center">
-                <Sun className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <p className="font-semibold text-lg">Outdoor Seating</p>
-                <p className="text-sm text-foreground-500">Enjoy fresh air</p>
+                <TreePalm className="w-8 h-8 text-primary mx-auto mb-2" />
+                <p className="font-semibold text-lg">Outdoor Dining</p>
+                <p className="text-sm text-foreground-500">Friendly atmosphere</p>
               </div>
               <div className="border border-divider rounded-medium p-4 text-center">
-                <Leaf className="w-8 h-8 mx-auto mb-2 text-primary" />
+                <Leaf className="w-8 h-8 text-primary mx-auto mb-2" />
                 <p className="font-semibold text-lg">Vegan Options</p>
                 <p className="text-sm text-foreground-500">For all preferences</p>
               </div>
               <div className="border border-divider rounded-medium p-4 text-center">
-                <Monitor className="w-8 h-8 mx-auto mb-2 text-primary" />
+                <Monitor className="w-8 h-8 text-primary mx-auto mb-2" />
                 <p className="font-semibold text-lg">Sports Viewing</p>
                 <p className="text-sm text-foreground-500">Watch while you dine</p>
               </div>
               <div className="border border-divider rounded-medium p-4 text-center">
-                <ChefHat className="w-8 h-8 mx-auto mb-2 text-primary" />
+                <ChefHat className="w-8 h-8 text-primary mx-auto mb-2" />
                 <p className="font-semibold text-lg">Hibachi Style</p>
                 <p className="text-sm text-foreground-500">Authentic cuisine</p>
               </div>

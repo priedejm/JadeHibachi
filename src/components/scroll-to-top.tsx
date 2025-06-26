@@ -3,28 +3,31 @@ import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const BackToTop: React.FC = () => {
+export const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
+  // Show button when page is scrolled down
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
+    if (window.scrollY > 300) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
     }
   };
 
+  // Set the scroll event listener
+  React.useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
   };
-
-  React.useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
 
   return (
     <AnimatePresence>
@@ -33,18 +36,19 @@ export const BackToTop: React.FC = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className="fixed bottom-6 right-6 z-50"
+          transition={{ duration: 0.2 }}
+          className="fixed bottom-6 right-6 z-40"
         >
           <Button
             isIconOnly
             color="primary"
-            variant="solid"
             size="lg"
-            className="rounded-full shadow-lg"
+            radius="full"
+            className="shadow-lg"
             onPress={scrollToTop}
-            aria-label="Back to top"
+            aria-label="Scroll to top"
           >
-            <Icon icon="lucide:chevron-up" width={24} height={24} />
+            <Icon icon="lucide:arrow-up" className="text-white" width={24} height={24} />
           </Button>
         </motion.div>
       )}

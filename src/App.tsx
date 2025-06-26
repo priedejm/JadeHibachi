@@ -9,14 +9,14 @@ import { Reviews } from "./components/reviews";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 import { CartProvider } from "./context/cart-context";
-import { BackToTop } from "./components/back-to-top";
+import { ScrollToTop } from "./components/scroll-to-top";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <CartProvider>
         <Navbar />
-        <main>
+        <main className="overflow-x-hidden pt-16">
           <Hero />
           <About />
           <Menu />
@@ -26,7 +26,7 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
-        <BackToTop />
+        <ScrollToTop />
       </CartProvider>
     </div>
   );

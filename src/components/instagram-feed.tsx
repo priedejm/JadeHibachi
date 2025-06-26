@@ -59,36 +59,31 @@ export const InstagramFeed: React.FC = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-content2 mobile-section-padding">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Follow Us on Instagram</h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto px-1">
+    <section className="py-20 bg-content2">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Follow Us on Instagram</h2>
+          <p className="text-foreground-600 max-w-2xl mx-auto">
             Stay updated with our latest dishes, promotions, and events by following us on Instagram
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </div>
         
-        <Card className="border border-divider max-w-md mx-auto mb-6 md:mb-8">
+        <Card className="border border-divider max-w-xl mx-auto mb-12">
           <CardBody className="p-0">
-            <div className="flex items-center justify-between p-4 border-b border-divider">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden">
-                  <Image
-                    removeWrapper
-                    alt="Jade Hibachi Instagram"
-                    className="w-full h-full object-cover"
-                    src="https://img.heroui.chat/image/food?w=200&h=200&u=50"
-                  />
+            <div className="flex items-center justify-between p-6 border-b border-divider">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 flex items-center justify-center">
+                  <Icon icon="logos:instagram-icon" width={28} height={28} className="drop-shadow-sm" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">@jadehibachigrill</h3>
-                  <p className="text-xs text-foreground-500">Charleston, SC</p>
+                  <h3 className="font-semibold text-lg">@jadehibachigrill</h3>
+                  <p className="text-sm text-foreground-500">Jade Hibachi Grill • Charleston, SC</p>
                 </div>
               </div>
               <Button 
                 color="primary" 
-                size="sm"
+                size="md"
                 startContent={<Icon icon="lucide:instagram" />}
                 as="a"
                 href="https://instagram.com"
@@ -97,12 +92,6 @@ export const InstagramFeed: React.FC = () => {
               >
                 Follow
               </Button>
-            </div>
-            <div className="p-4">
-              <p className="text-sm">
-                Serving the best hibachi in Charleston! Tag us in your photos to be featured. 
-                #jadehibachi #charlestonsc #hibachigrill
-              </p>
             </div>
           </CardBody>
         </Card>

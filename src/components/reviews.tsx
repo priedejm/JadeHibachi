@@ -92,17 +92,17 @@ export const Reviews: React.FC = () => {
   };
 
   return (
-    <section id="reviews" className="py-16 md:py-20 bg-background mobile-section-padding">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Customer Reviews</h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto px-1">
+    <section id="reviews" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Customer Reviews</h2>
+          <p className="text-foreground-600 max-w-2xl mx-auto">
             See what our customers have to say about their dining experience at Jade Hibachi Grill
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-3 md:gap-6 mb-8 md:mb-12">
+        <div className="flex flex-wrap justify-center gap-6 mb-12">
           <div className="flex flex-col items-center p-4 bg-content1 rounded-medium">
             <div className="flex items-center">
               <Icon icon="logos:google-icon" width={24} height={24} />
@@ -161,7 +161,7 @@ export const Reviews: React.FC = () => {
         </div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -170,7 +170,7 @@ export const Reviews: React.FC = () => {
           {reviews.map((review) => (
             <motion.div key={review.id} variants={item}>
               <Card className="border border-divider h-full">
-                <CardBody className="p-4 md:p-6">
+                <CardBody className="p-6">
                   <div className="flex items-center gap-4 mb-4">
                     <Avatar src={review.avatar} name={review.name} />
                     <div>

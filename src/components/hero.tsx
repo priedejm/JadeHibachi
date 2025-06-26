@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 
 export const Hero: React.FC = () => {
   return (
-    <section className="hero-gradient w-full h-[90vh] flex items-center justify-center text-white">
-      <div className="container mx-auto px-4 md:px-6 text-center">
+    <section className="hero-gradient w-full h-[calc(100vh-64px)] flex items-center justify-center text-white">
+      <div className="container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 px-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Authentic Hibachi Experience
           </h1>
-          <p className="text-base md:text-xl mb-8 opacity-90 px-2">
+          <p className="text-lg md:text-xl mb-8 opacity-90">
             Enjoy the finest hibachi-style cuisine in Charleston, SC
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               color="primary"

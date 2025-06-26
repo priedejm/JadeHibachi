@@ -24,17 +24,17 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20 bg-content2 mobile-section-padding">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Contact Us</h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto px-1">
+    <section id="contact" className="py-20 bg-content2">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+          <p className="text-foreground-600 max-w-2xl mx-auto">
             Have questions or feedback? We'd love to hear from you!
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -42,19 +42,16 @@ export const Contact: React.FC = () => {
             viewport={{ once: true }}
           >
             <Card className="border border-divider h-full">
-              <CardBody className="p-4 md:p-6 mobile-card-padding">
-                <h3 className="text-xl font-semibold mb-4 md:mb-6">Get In Touch</h3>
+              <CardBody className="p-6">
+                <h3 className="text-xl font-semibold mb-6">Get In Touch</h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 mobile-spacing">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <Input
                     label="Name"
                     placeholder="Your name"
                     value={name}
                     onValueChange={setName}
                     isRequired
-                    classNames={{
-                      inputWrapper: "px-3 py-1 md:px-4 md:py-2"
-                    }}
                   />
                   
                   <Input
@@ -64,9 +61,6 @@ export const Contact: React.FC = () => {
                     onValueChange={setEmail}
                     type="email"
                     isRequired
-                    classNames={{
-                      inputWrapper: "px-3 py-1 md:px-4 md:py-2"
-                    }}
                   />
                   
                   <Textarea
@@ -76,9 +70,6 @@ export const Contact: React.FC = () => {
                     onValueChange={setMessage}
                     minRows={4}
                     isRequired
-                    classNames={{
-                      inputWrapper: "px-3 py-1 md:px-4 md:py-2"
-                    }}
                   />
                   
                   <Button 

@@ -14,14 +14,120 @@ interface MenuItem {
 }
 
 export const Menu: React.FC = () => {
-  const [selected, setSelected] = React.useState("featured");
+  const [selected, setSelected] = React.useState("popular");
   const [showCartNotification, setShowCartNotification] = React.useState(false);
   const [lastAddedItem, setLastAddedItem] = React.useState("");
   const [showAllItems, setShowAllItems] = React.useState(false);
   
-  const { items: cartItems, addItem, totalItems } = useCart();
+  const { items: cartItems, addItem } = useCart();
   
   const menuItems: MenuItem[] = [
+    // Popular items
+    {
+      id: "p1",
+      name: "Chicken Bowl",
+      description: "Grilled chicken with fresh vegetables over steamed rice",
+      price: 9.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=20",
+      category: "popular"
+    },
+    {
+      id: "p2",
+      name: "Shrimp Entree",
+      description: "Grilled shrimp with vegetables and signature sauce",
+      price: 14.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=21",
+      category: "popular"
+    },
+    {
+      id: "p3",
+      name: "Steak Bowl",
+      description: "Grilled steak with fresh vegetables over steamed rice",
+      price: 11.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=22",
+      category: "popular"
+    },
+    {
+      id: "p4",
+      name: "Vegetable Entree",
+      description: "Assorted fresh vegetables grilled hibachi style with sauce",
+      price: 14.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=23",
+      category: "popular"
+    },
+    {
+      id: "p5",
+      name: "Gyoza (5)",
+      description: "Japanese dumplings filled with seasoned ground meat and vegetables",
+      price: 7.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=24",
+      category: "popular"
+    },
+    {
+      id: "p6",
+      name: "Cream Cheese Rangoons",
+      description: "Crispy wontons filled with cream cheese and green onions",
+      price: 8.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=25",
+      category: "popular"
+    },
+    {
+      id: "p7",
+      name: "Veggie Bowl",
+      description: "Assorted fresh vegetables over steamed rice",
+      price: 9.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=26",
+      category: "popular"
+    },
+    {
+      id: "p8",
+      name: "Spring Roll (5)",
+      description: "Crispy spring rolls filled with vegetables and served with dipping sauce",
+      price: 10.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=27",
+      category: "popular"
+    },
+    {
+      id: "p9",
+      name: "Spring Roll (2)",
+      description: "Crispy spring rolls filled with vegetables and served with dipping sauce",
+      price: 4.50,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=28",
+      category: "popular"
+    },
+    {
+      id: "p10",
+      name: "Side Of Veg",
+      description: "Fresh vegetables grilled hibachi style",
+      price: 6.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=29",
+      category: "popular"
+    },
+    {
+      id: "p11",
+      name: "Side Of Rice",
+      description: "Steamed white rice",
+      price: 3.50,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=30",
+      category: "popular"
+    },
+    {
+      id: "p12",
+      name: "Side Of Shrimp",
+      description: "Grilled shrimp with signature sauce",
+      price: 8.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=31",
+      category: "popular"
+    },
+    {
+      id: "p13",
+      name: "Side Of Steak",
+      description: "Grilled steak with signature sauce",
+      price: 9.00,
+      image: "https://img.heroui.chat/image/food?w=400&h=300&u=32",
+      category: "popular"
+    },
+    // Existing hibachi items
     {
       id: "1",
       name: "Chicken & Shrimp Combo",
@@ -85,114 +191,17 @@ export const Menu: React.FC = () => {
       price: 5.99,
       image: "https://img.heroui.chat/image/food?w=400&h=300&u=10",
       category: "desserts"
-    },
-    {
-      id: "f1",
-      name: "Chicken Bowl",
-      description: "Grilled chicken served over rice with vegetables",
-      price: 9.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=21",
-      category: "featured"
-    },
-    {
-      id: "f2",
-      name: "Shrimp Entree",
-      description: "Grilled shrimp served with vegetables and rice",
-      price: 14.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=22",
-      category: "featured"
-    },
-    {
-      id: "f3",
-      name: "Steak Bowl",
-      description: "Grilled steak served over rice with vegetables",
-      price: 11.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=23",
-      category: "featured"
-    },
-    {
-      id: "f4",
-      name: "Vegetable Entree",
-      description: "Assorted grilled vegetables served with rice",
-      price: 14.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=24",
-      category: "featured"
-    },
-    {
-      id: "f5",
-      name: "Gyoza (5)",
-      description: "Japanese dumplings filled with meat and vegetables",
-      price: 7.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=25",
-      category: "featured"
-    },
-    {
-      id: "f6",
-      name: "Cream Cheese Rangoons",
-      description: "Crispy wontons filled with cream cheese",
-      price: 8.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=26",
-      category: "featured"
-    },
-    {
-      id: "f7",
-      name: "Veggie Bowl",
-      description: "Mixed vegetables served over rice",
-      price: 9.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=27",
-      category: "featured"
-    },
-    {
-      id: "f8",
-      name: "Spring Roll (5)",
-      description: "Crispy spring rolls filled with vegetables",
-      price: 10.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=28",
-      category: "featured"
-    },
-    {
-      id: "f9",
-      name: "Spring Roll (2)",
-      description: "Crispy spring rolls filled with vegetables",
-      price: 4.50,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=29",
-      category: "featured"
-    },
-    {
-      id: "f10",
-      name: "Side Of Veg",
-      description: "Side portion of mixed vegetables",
-      price: 6.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=30",
-      category: "featured"
-    },
-    {
-      id: "f11",
-      name: "Side Of Rice",
-      description: "Side portion of steamed rice",
-      price: 3.50,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=31",
-      category: "featured"
-    },
-    {
-      id: "f12",
-      name: "Side Of Shrimp",
-      description: "Side portion of grilled shrimp",
-      price: 8.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=32",
-      category: "featured"
-    },
-    {
-      id: "f13",
-      name: "Side Of Steak",
-      description: "Side portion of grilled steak",
-      price: 9.00,
-      image: "https://img.heroui.chat/image/food?w=400&h=300&u=33",
-      category: "featured"
     }
   ];
   
   const filteredItems = menuItems.filter(item => item.category === selected);
+  
+  // Determine if we need to show the "View More" button
+  // For screens with 3 columns (lg), show 6 items initially (2 rows)
+  // For screens with 2 columns (md), show 4 items initially (2 rows)
+  // For screens with 1 column, show 2 items initially (2 rows)
+  const itemsToShow = showAllItems ? filteredItems : filteredItems.slice(0, 6);
+  const shouldShowViewMore = filteredItems.length > 6;
   
   const container = {
     hidden: { opacity: 0 },
@@ -225,11 +234,11 @@ export const Menu: React.FC = () => {
   };
 
   return (
-    <section id="menu" className="py-16 md:py-20 bg-content2 mobile-section-padding">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Menu</h2>
-          <p className="text-foreground-600 max-w-2xl mx-auto px-1">
+    <section id="menu" className="py-20 bg-content2">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Our Menu</h2>
+          <p className="text-foreground-600 max-w-2xl mx-auto">
             Explore our delicious hibachi-style dishes prepared with fresh ingredients and authentic flavors
           </p>
           <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
@@ -238,16 +247,19 @@ export const Menu: React.FC = () => {
         <Tabs 
           aria-label="Menu Categories" 
           selectedKey={selected} 
-          onSelectionChange={setSelected as any}
+          onSelectionChange={(key) => {
+            setSelected(key as string);
+            setShowAllItems(false); // Reset view more state when changing tabs
+          }}
           color="primary"
           variant="underlined"
           classNames={{
-            tabList: "w-full mb-6 md:mb-8 flex-wrap md:flex-nowrap md:justify-center overflow-x-auto scrollbar-hide gap-2 md:gap-4",
+            tabList: "mx-auto max-w-fit mb-8",
             cursor: "bg-primary",
-            tab: "px-3 md:px-6 py-3 text-sm md:text-base whitespace-nowrap flex-shrink-0 data-[selected=true]:text-primary"
+            tab: "px-3"
           }}
         >
-          <Tab key="featured" title="Featured Items" />
+          <Tab key="popular" title="Popular" />
           <Tab key="hibachi" title="Hibachi" />
           <Tab key="teriyaki" title="Teriyaki" />
           <Tab key="appetizers" title="Appetizers" />
@@ -267,33 +279,33 @@ export const Menu: React.FC = () => {
         )}
         
         <motion.div 
-          key={selected} // Add key to force re-render when tab changes
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          key={selected + (showAllItems ? "-all" : "-partial")} // Update key to force re-render
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           animate="show"
           viewport={{ once: true }}
         >
-          {(showAllItems ? filteredItems : filteredItems.slice(0, 6)).map((menuItem) => {
+          {itemsToShow.map((menuItem) => {
             const cartItem = cartItems.find(i => i.id === menuItem.id);
             const quantity = cartItem?.quantity || 0;
             
             return (
-              <motion.div key={menuItem.id} variants={item} className="menu-item-hover mobile-menu-item">
+              <motion.div key={menuItem.id} variants={item} className="menu-item-hover">
                 <Card className="border border-divider">
                   <CardBody className="p-0">
                     <Image
                       removeWrapper
                       alt={menuItem.name}
-                      className="w-full h-40 md:h-48 object-cover"
+                      className="w-full h-48 object-cover"
                       src={menuItem.image}
                     />
-                    <div className="p-3 md:p-4">
+                    <div className="p-4">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-base md:text-lg font-semibold">{menuItem.name}</h3>
+                        <h3 className="text-lg font-semibold">{menuItem.name}</h3>
                         <span className="text-primary font-semibold">${menuItem.price.toFixed(2)}</span>
                       </div>
-                      <p className="text-foreground-600 text-xs md:text-sm">{menuItem.description}</p>
+                      <p className="text-foreground-600 text-sm">{menuItem.description}</p>
                       
                       {quantity > 0 && (
                         <div className="mt-2 flex items-center gap-2 text-sm text-primary">
@@ -303,8 +315,8 @@ export const Menu: React.FC = () => {
                       )}
                     </div>
                   </CardBody>
-                  <CardFooter className="flex justify-end py-2 px-3 md:py-3 md:px-4">
-                    <Button
+                  <CardFooter className="flex justify-end">
+                    <Button 
                       color="primary" 
                       variant="solid" 
                       startContent={quantity > 0 ? <Icon icon="lucide:check" /> : <Icon icon="lucide:plus" />}
@@ -320,16 +332,17 @@ export const Menu: React.FC = () => {
           })}
         </motion.div>
         
-        {/* View More button moved to bottom and only shown when needed */}
-        {filteredItems.length > 6 && (
+        {shouldShowViewMore && (
           <div className="text-center mt-8">
             <Button 
               color="primary" 
-              variant="flat" 
+              variant="flat"
+              size="lg"
               onPress={() => setShowAllItems(!showAllItems)}
               startContent={<Icon icon={showAllItems ? "lucide:chevron-up" : "lucide:chevron-down"} />}
+              className="font-medium"
             >
-              {showAllItems ? "Show Less" : `View More (${filteredItems.length - 6} items)`}
+              {showAllItems ? "Show Less" : "View More"}
             </Button>
           </div>
         )}
