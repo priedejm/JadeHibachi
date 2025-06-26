@@ -19,16 +19,12 @@ export const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="overflow-hidden border-none">
-              <CardBody className="p-0">
-                <Image
-                  removeWrapper
-                  alt="Jade Hibachi Grill Restaurant"
-                  className="w-full h-auto"
-                  src="/assets/images/hibachi2.jpg"
-                />
-              </CardBody>
-            </Card>
+            <Image
+              removeWrapper
+              alt="Jade Hibachi Grill Restaurant"
+              className="w-full h-auto md:w-[85%] lg:w-[80%] md:mx-auto rounded-medium"
+              src="/assets/images/hibachi2.jpg"
+            />
           </motion.div>
           
           <motion.div

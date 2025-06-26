@@ -6,17 +6,34 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent horizontal scroll on html */
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll on body */
+  width: 100%;
+  max-width: 100vw; /* Ensure body doesn't exceed viewport width */
+}
+
+/* Ensure all direct children respect viewport width */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent any element from causing horizontal overflow */
+.container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .hero-gradient {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/assets/images/JadeHibachi.jpg');
   background-size: cover;
   background-position: center;
+  width: 100%;
+  overflow-x: hidden; /* Prevent hero section from overflowing */
 }
 
 .menu-item-hover {
@@ -32,6 +49,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 8px;
+  width: 100%;
+  overflow-x: hidden; /* Prevent grid overflow */
 }
 
 @media (min-width: 640px) {
@@ -43,9 +62,12 @@ body {
 
 /* Mobile padding improvements */
 @media (max-width: 640px) {
+  /* Ensure container doesn't overflow on mobile */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   
   .mobile-section-padding {
@@ -64,15 +86,73 @@ body {
   .mobile-menu-item {
     margin-bottom: 1.5rem;
   }
+  
+  /* Ensure all sections respect mobile viewport */
+  section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Fix potential text overflow */
+  h1, h2, h3, h4, h5, h6, p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Ensure cards don't overflow */
+  [data-slot="base"] {
+    max-width: 100%;
+  }
+  
+  /* Fix for any wide content */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-/* Fix for horizontal tabs */
+/* Fix for horizontal tabs - prevent overflow */
 [data-slot="tab-list"] {
   overflow-x: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  max-width: 100%;
+  width: 100%;
 }
 
 [data-slot="tab-list"]::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* Additional fixes for common overflow causes */
+.flex {
+  min-width: 0; /* Prevent flex items from overflowing */
+}
+
+.grid {
+  min-width: 0; /* Prevent grid items from overflowing */
+}
+
+/* Ensure no element creates horizontal scroll */
+* {
+  max-width: 100%;
+}
+
+/* Fix for specific components that might overflow */
+.text-3xl, .text-4xl, .text-5xl, .text-6xl {
+  word-break: break-word;
+}
+
+/* Prevent button groups from overflowing */
+.flex.gap-4 {
+  flex-wrap: wrap;
+}
+
+/* Fix for navbar on mobile */
+@media (max-width: 640px) {
+  nav {
+    width: 100%;
+    max-width: 100vw;
+  }
 }
